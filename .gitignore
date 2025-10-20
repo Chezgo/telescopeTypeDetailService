@@ -1,0 +1,28 @@
+# Build output
+/target/
+!src/main/resources/static/target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Docker
+env.local
+.env
+
+# Log files
+*.log
+logs/
+
+# Maven
+.mvn
+!.mvn/wrapper/maven-wrapper.jar
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
