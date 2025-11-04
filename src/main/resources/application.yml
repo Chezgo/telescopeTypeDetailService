@@ -1,3 +1,8 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://100.104.239.47:8090/realms/general_realm
   profiles:
     active: dev
