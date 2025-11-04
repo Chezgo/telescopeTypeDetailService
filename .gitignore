@@ -18,9 +18,6 @@ env.local
 *.log
 logs/
 
-# Maven
-.mvn
-!.mvn/wrapper/maven-wrapper.jar
 
 # Windows
 Thumbs.db

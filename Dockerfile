@@ -1,5 +1,5 @@
 # Этап сборки
-FROM openjdk:17-jdk-slim AS builder
+FROM eclipse-temurin:17-jdk-jammy AS builder
 WORKDIR /app
 
 # Копируем файлы для загрузки зависимостей
@@ -13,7 +13,7 @@ RUN ./mvnw package -DskipTests -B
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 # Финальный образ
-FROM openjdk:17-slim AS runner
+FROM eclipse-temurin:17-jre-jammy AS runner
 VOLUME /tmp
 
 ARG DEPENDENCY=/app/target/dependency
