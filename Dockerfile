@@ -23,4 +23,7 @@ COPY --from=builder ${DEPENDENCY}/BOOT-INF/classes /app
 
 EXPOSE 9005
 
+# Устанавливаем переменную окружения по умолчанию
+ENV SPRING_PROFILES_ACTIVE=dev
+
 ENTRYPOINT ["java", "-cp", "app:app/lib/*", "com.example.telescopeTypeDetailService.TelescopeTypeDetailServiceApplication"]

@@ -1,30 +1,15 @@
 services:
-  db:
-    image: postgres:16
-    container_name: telescope_db
-    environment:
-      POSTGRES_DB: db_star
-      POSTGRES_USER: telescope_user
-      POSTGRES_PASSWORD: telescope_pass
-    ports:
-      - "5438:5432"  # внешний:внутренний
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    restart: unless-stopped
-
   app:
     build: .
     container_name: telescope_type_detail_service
+    restart: unless-stopped
     ports:
       - "9005:9005"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/db_star
-      SPRING_DATASOURCE_USERNAME: telescope_user
-      SPRING_DATASOURCE_PASSWORD: telescope_pass
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-    depends_on:
-      - db
-    restart: unless-stopped
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - monitoring
 
-volumes:
-  postgres_data:
+networks:
+  monitoring:
+    external: true

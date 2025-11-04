@@ -1,8 +1,10 @@
 package com.example.telescopeTypeDetailService.dto;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public record TelescopeTypeDetailUpdateRequest(
+public record CreateTelescopeTypeDetailRequest(
+        @NotBlank(message = "Имя обязательно для заполнения")
         @Size(max = 50, message = "Имя не может быть длиннее 50 символов")
         String name,
 
